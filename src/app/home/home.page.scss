@@ -4,8 +4,9 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  // top: 50%;
+  // transform: translateY(-50%);
+  
 }
 
 #container strong {
@@ -24,4 +25,32 @@
 
 #container a {
   text-decoration: none;
+}
+
+.map-container {
+  border: 1px solid;
+  height: 70%;
+  position: absolute;
+  align-content: flex-start;
+}
+
+.card-map {
+  border: 1px solid;
+  height: 30%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  align-content: flex-start;
+
+}
+
+#card-map {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  align-content: flex-start;
+
 }

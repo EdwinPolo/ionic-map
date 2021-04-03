@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "googleMap",
+  "appId": "com.gmaps.app",
+  "appName": "gmaps",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
