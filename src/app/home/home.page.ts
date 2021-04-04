@@ -1,6 +1,11 @@
+import { User } from './../shared/User';
 import { Component, OnInit } from '@angular/core';
 import { GeolocationOptions, Plugins } from '@capacitor/core';
+import { Router } from '@angular/router';
+import { UserService } from '../shared/user.service';
+
 const { Geolocation } = Plugins;
+
 declare var google;
 @Component({
   selector: 'app-home',
@@ -10,7 +15,14 @@ declare var google;
 export class HomePage implements OnInit {
 
   // public map: any;
-  constructor() {}
+
+  private user1: User;
+  private user2: User;
+
+  constructor(
+    private apiService: UserService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.mapInit();
@@ -32,17 +44,37 @@ export class HomePage implements OnInit {
       title: 'Current Location',
     });
 
-  }
+    this.user1 = {lat: coordinates.coords.latitude, lng: coordinates.coords.longitude, name: 'Edwin'};
 
-  async getCurrentPosition() {
-    const coordinates = await Geolocation.getCurrentPosition();
-    console.log('Current', coordinates);
-  }
-
-  watchPosition() {
-    const wait = Geolocation.watchPosition({}, (position, err) => {
+    this.apiService.getUser('user2').valueChanges().subscribe({
+      next: (res: any) => {
+        this.user2 = {lat: res.lat as number, lng: res.lng as number, name: res.name as string};
+      },
+      error: (err: any) => {
+        console.log('Error trying to get user info', err);
+      },
     });
+
+
   }
+
+
+  updateCurrentLocation() {
+    this.apiService.updateUser('user1', {lat: this.user1.lat, lng: this.user1.lng, name: this.user1.name }).then(res => {
+      this.router.navigate(['/home']);
+    })
+      .catch(error => console.log(error));
+  }
+
+  // async getCurrentPosition() {
+  //   const coordinates = await Geolocation.getCurrentPosition();
+  //   console.log('Current', coordinates);
+  // }
+
+  // watchPosition() {
+  //   const wait = Geolocation.watchPosition({}, (position, err) => {
+  //   });
+  // }
 
 
 }
