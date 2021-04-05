@@ -1,11 +1,20 @@
 <ion-content [fullscreen]="true" color="light">
   <div id="container" class="map-container"></div>
-  <div class="card-map" color="light">
-    <ion-card id="card-map" color="white">
-      <ion-card-content>
-        <ion-button (click)="updateCurrentLocation()" expand="">Current location</ion-button>
-      </ion-card-content>
-    </ion-card>
+
+  <div class="card-map">
+    <div id="total"></div>
+    <ion-card>
+      <ion-item (click)="distance()">
+        <ion-icon name="pin" slot="start"></ion-icon>
+        <ion-label>Distance and Route</ion-label>
+      </ion-item>
+    
+      <ion-item (click)="updateCurrentLocation()">
+        <ion-icon name="locate" slot="start"></ion-icon>
+        <ion-label>Current Location</ion-label>
+      </ion-item>
+    </ion-card>   
+    <div id="right-panel"></div>
   </div>
 
 </ion-content>
