@@ -87,16 +87,6 @@ export class HomePage implements OnInit {
     const rightPanel = document.getElementById('right-panel') as HTMLDivElement;
     rightPanel.innerHTML = '';
 
-    this.map.zoom = 30;
-    const myLatLng = { lat: this.user2.lat, lng: this.user2.lng };
-    // tslint:disable-next-line: no-unused-expression
-    new google.maps.Marker({
-      position: myLatLng,
-      map: this.map,
-      title: 'Current Location',
-    });
-
-
     const origin1 = new google.maps.LatLng(this.user1.lat, this.user1.lng);
     const destinationA = new google.maps.LatLng(this.user2.lat, this.user2.lng);
 
