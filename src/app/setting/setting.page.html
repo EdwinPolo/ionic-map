@@ -5,5 +5,22 @@
 </ion-header>
 
 <ion-content>
-<div id="output"></div>
+  <div id="output"></div>
+  <ion-item>
+    <ion-label position="fixed">Nombre</ion-label>
+    <ion-input [(ngModel)]="name"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="updateName()">Actualizar Nombre</ion-button>
+
+  <ion-button expand="full" (click)="friendInfo()">Mostrar Info Amigo</ion-button>
+
+  <div class="d-flex flex-column">
+    <ion-label color="secodary">Nombre: {{nombreAmigo}}</ion-label>
+  </div>
+  <div>    
+    <ion-label color="secodary">Lat: {{latAmigo}}</ion-label>
+  </div>
+  <div>
+    <ion-label color="secodary">Lon: {{lonAmigo}}</ion-label>
+  </div>
 </ion-content>

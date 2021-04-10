@@ -45,6 +45,14 @@ export class UserService {
     });
   }
 
+  // Update
+  updateUserName(id, newName: string) {
+    this.userRef = this.db.object('/users/' + id);
+    return this.userRef.update({
+      name: newName,
+    });
+  }
+
   // Delete
   deleteUser(id: string) {
     this.userRef = this.db.object('/user/' + id);
